@@ -36,7 +36,11 @@ namespace SEB.Server
 
         public void HandleClient(TcpClient client) 
         {
-            //Empty for now
+            using (NetworkStream stream = client.GetStream()) 
+            {
+                Router router = new Router();
+                router.HandleRequest(stream);
+            }
             Console.WriteLine("Handling client...");
             client.Close();
         }
