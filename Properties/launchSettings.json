@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SEB": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

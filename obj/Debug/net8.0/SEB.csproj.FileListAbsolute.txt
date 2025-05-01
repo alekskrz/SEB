@@ -1,0 +1,14 @@
+E:\C#\SEB\bin\Debug\net8.0\SEB.exe
+E:\C#\SEB\bin\Debug\net8.0\SEB.deps.json
+E:\C#\SEB\bin\Debug\net8.0\SEB.runtimeconfig.json
+E:\C#\SEB\bin\Debug\net8.0\SEB.dll
+E:\C#\SEB\bin\Debug\net8.0\SEB.pdb
+E:\C#\SEB\obj\Debug\net8.0\SEB.GeneratedMSBuildEditorConfig.editorconfig
+E:\C#\SEB\obj\Debug\net8.0\SEB.AssemblyInfoInputs.cache
+E:\C#\SEB\obj\Debug\net8.0\SEB.AssemblyInfo.cs
+E:\C#\SEB\obj\Debug\net8.0\SEB.csproj.CoreCompileInputs.cache
+E:\C#\SEB\obj\Debug\net8.0\SEB.dll
+E:\C#\SEB\obj\Debug\net8.0\refint\SEB.dll
+E:\C#\SEB\obj\Debug\net8.0\SEB.pdb
+E:\C#\SEB\obj\Debug\net8.0\SEB.genruntimeconfig.cache
+E:\C#\SEB\obj\Debug\net8.0\ref\SEB.dll
