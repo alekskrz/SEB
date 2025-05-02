@@ -1,17 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\C#\\SEB\\",
+  "WorkspaceRootPath": "C:\\School\\SEB\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|e:\\c#\\seb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|c:\\school\\seb\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|e:\\c#\\seb\\server\\httpserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|c:\\school\\seb\\server\\tournamentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|solutionrelative:server\\tournamentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|c:\\school\\seb\\server\\router.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|solutionrelative:server\\router.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|c:\\school\\seb\\database\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|solutionrelative:database\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|c:\\school\\seb\\server\\httpserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|solutionrelative:server\\httpserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|e:\\c#\\seb\\seb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|c:\\school\\seb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|c:\\school\\seb\\seb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|solutionrelative:seb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -22,15 +38,67 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "TournamentManager.cs",
+              "DocumentMoniker": "C:\\School\\SEB\\Server\\TournamentManager.cs",
+              "RelativeDocumentMoniker": "Server\\TournamentManager.cs",
+              "ToolTip": "C:\\School\\SEB\\Server\\TournamentManager.cs",
+              "RelativeToolTip": "Server\\TournamentManager.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADAAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T14:03:48.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\School\\SEB\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\School\\SEB\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwAgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T09:49:11.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DatabaseManager.cs",
+              "DocumentMoniker": "C:\\School\\SEB\\Database\\DatabaseManager.cs",
+              "RelativeDocumentMoniker": "Database\\DatabaseManager.cs",
+              "ToolTip": "C:\\School\\SEB\\Database\\DatabaseManager.cs",
+              "RelativeToolTip": "Database\\DatabaseManager.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAnwLAAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T09:40:20.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Router.cs",
+              "DocumentMoniker": "C:\\School\\SEB\\Server\\Router.cs",
+              "RelativeDocumentMoniker": "Server\\Router.cs",
+              "ToolTip": "C:\\School\\SEB\\Server\\Router.cs",
+              "RelativeToolTip": "Server\\Router.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T09:40:12.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "HttpServer.cs",
-              "DocumentMoniker": "E:\\C#\\SEB\\Server\\HttpServer.cs",
+              "DocumentMoniker": "C:\\School\\SEB\\Server\\HttpServer.cs",
               "RelativeDocumentMoniker": "Server\\HttpServer.cs",
-              "ToolTip": "E:\\C#\\SEB\\Server\\HttpServer.cs",
+              "ToolTip": "C:\\School\\SEB\\Server\\HttpServer.cs",
               "RelativeToolTip": "Server\\HttpServer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -39,11 +107,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SEB",
-              "DocumentMoniker": "E:\\C#\\SEB\\SEB.csproj",
+              "DocumentIndex": 6,
+              "Title": "SEB.csproj",
+              "DocumentMoniker": "C:\\School\\SEB\\SEB.csproj",
               "RelativeDocumentMoniker": "SEB.csproj",
-              "ToolTip": "E:\\C#\\SEB\\SEB.csproj",
+              "ToolTip": "C:\\School\\SEB\\SEB.csproj",
               "RelativeToolTip": "SEB.csproj",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -52,13 +120,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
-              "DocumentMoniker": "E:\\C#\\SEB\\Program.cs",
+              "DocumentMoniker": "C:\\School\\SEB\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\C#\\SEB\\Program.cs",
+              "ToolTip": "C:\\School\\SEB\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-01T11:31:16.249Z",
               "EditorCaption": ""

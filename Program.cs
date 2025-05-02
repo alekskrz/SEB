@@ -9,7 +9,7 @@ namespace SEB
             Console.WriteLine("Staring Sports Exercise Battle Server...");
 
             //Create and start the server
-            HttpServer server = new HttpServer(8080);
+            HttpServer server = new HttpServer(10001);
             server.Start();
         }
     }

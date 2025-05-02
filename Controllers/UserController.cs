@@ -12,29 +12,22 @@ namespace SEB.Controllers
 {
     public class UserController
     {
-        //private static List<User> _users = new List<User>();
-        //private static int nextUserId = 1;
         private static List<PushupRecordEntries> records = new List<PushupRecordEntries>();
         private static int nextRecordId = 1;
         private readonly DatabaseManager db = new DatabaseManager();
-
-        /*static UserController()
-        {
-            SEB.Utils.TokenManager.UsersReference = _users;
-        }*/
 
         public void Register(Stream stream, string body) 
         {
             try
             {
                 var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
-                if (!data.ContainsKey("username") || !data.ContainsKey("password"))
+                if (!data.ContainsKey("Username") || !data.ContainsKey("Password"))
                 {
                     SendBadRequest(stream, "Missing username or password.");
                     return;
                 }
-                string username = data["username"];
-                string password = data["password"];
+                string username = data["Username"];
+                string password = data["Password"];
                 if (db.GetUserByUsername(username) != null)
                 {
                     SendBadRequest(stream, "Username already taken.");
@@ -78,14 +71,14 @@ namespace SEB.Controllers
             try
             {
                 var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
-                if (!data.ContainsKey("username") || !data.ContainsKey("password"))
+                if (!data.ContainsKey("Username") || !data.ContainsKey("Password"))
                 {
                     SendBadRequest(stream, "Missing username or password.");
                     return;
                 }
 
-                string username = data["username"];
-                string password = data["password"];
+                string username = data["Username"];
+                string password = data["Password"];
 
                 var user = db.GetUserByUsername(username);
 
@@ -94,17 +87,11 @@ namespace SEB.Controllers
                     SendBadRequest(stream, "Invalid credentials.");
                     return;
                 }
-                user.Token = Guid.NewGuid().ToString();
-                //user.Token = token;
+                user.Token = $"{user.Username}-sebToken";
+
                 db.UpdateUserToken(user.Id, user.Token);
                 Console.WriteLine($"User logged in: {username}");
 
-               /* var responseObj = new Dictionary<string, string>
-                {
-                    { 
-                        "token", token
-                    }
-                };*/
                 string jsonResponse = JsonConvert.SerializeObject(new { token = user.Token });
 
                 string response = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n" + jsonResponse;
@@ -127,20 +114,6 @@ namespace SEB.Controllers
                 return;
             }
 
-            /*var History = new List<object>
-            {
-                new
-                {
-                    count = 0, duration = 60, timestamp = "2025-03-30T10:00:00Z"
-                }
-            };*/
-            /*var userRecords = db.GetRecordsByUserId(user.Id)
-                .ConvertAll(r => new
-                {
-                    count = r.Count,
-                    duration = r.Duration,
-                    timestamp = r.TimeStamp.ToString("o")
-                });*/
             var records = db.GetRecordsByUserId(user.Id)
                 .Select(r => new
                 {
@@ -176,14 +149,19 @@ namespace SEB.Controllers
             {
                 var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
 
-                if (!data.ContainsKey("count") || !data.ContainsKey("duration"))
+                string countStr = data.ContainsKey("Count") ? data["Count"] : data.GetValueOrDefault("count");
+                string durationStr = data.ContainsKey("DurationInSeconds") ? data["DurationInSeconds"] : data.GetValueOrDefault("duration");
+
+                if (string.IsNullOrEmpty(countStr) || string.IsNullOrEmpty(durationStr))
                 {
                     SendBadRequest(stream, "Missing count or duration.");
                     return;
                 }
 
-                int count = int.Parse(data["count"]);
-                int duration = int.Parse(data["duration"]);
+                int count = int.Parse(countStr);
+                int duration = int.Parse(durationStr);
+
+
 
                 var record = new PushupRecordEntries
                 {
@@ -194,6 +172,7 @@ namespace SEB.Controllers
                 };
 
                 //records.Add(record);
+                Console.WriteLine($"Inserting record into DB: UserId={record.UserId}, Count={record.Count}, Duration={record.Duration}");
                 db.InsertPushupRecord(record);
                 var recentRecords = db.GetRecordsNear(DateTime.Now, 5);
                 var grouped = new Dictionary<int, int>();
@@ -220,76 +199,10 @@ namespace SEB.Controllers
                     db.UpdateUserEloAndAchievements(u);
                 }
 
-                /*List<int> winners = new();
-                foreach (var entry in grouped)
-                {
-                    if (entry.Value == max)
-                        winners.Add(entry.Key);
-                }
-
-                // Update ELO
-                foreach (var entry in grouped)
-                {
-                    User u = db.GetUserByUsername(usersUsernameFromId(entry.Key)); // you'll need a lookup helper
-                    if (winners.Contains(entry.Key))
-                        u.Elo += (winners.Count > 1 ? 1 : 2);
-                    else
-                        u.Elo = Math.Max(0, u.Elo - 1);
-
-                    db.UpdateUserEloAndAchievements(u);
-                }*/
-
                 CheckAchievements(user);
                 db.UpdateUserEloAndAchievements(user);
 
                 Console.WriteLine($"Push-up saved + tournament processed for {user.Username}");
-                // Run tournament: find other players within 5 seconds
-                /*List<PushupRecordEntries> nearbyRecords = records.FindAll(r =>
-                    r.Id != record.Id &&
-                    Math.Abs((r.TimeStamp - DateTime.Now).TotalSeconds) <= 5);
-
-                // Add this user to the list
-                nearbyRecords.Add(record);
-
-                // Group by user and sum their counts
-                Dictionary<int, int> userTotals = new Dictionary<int, int>();
-                foreach (var rec in nearbyRecords)
-                {
-                    if (!userTotals.ContainsKey(rec.UserId))
-                        userTotals[rec.UserId] = 0;
-
-                    userTotals[rec.UserId] += rec.Count;
-                }
-
-                // Find max count
-                int maxPushups = userTotals.Values.Max();
-                List<int> winners = new List<int>();
-
-                foreach (var entry in userTotals)
-                {
-                    if (entry.Value == maxPushups)
-                    {
-                        winners.Add(entry.Key);
-                    }
-                }
-
-                // ELO update
-                foreach (var entry in userTotals)
-                {
-                    var u = _users.Find(x => x.Id == entry.Key);
-                    if (u == null) continue;
-
-                    if (winners.Contains(entry.Key))
-                        u.Elo += (winners.Count > 1 ? 1 : 2); // Draw: +1, win: +2
-                    else
-                        u.Elo -= 1;
-
-                    // Clamp to minimum ELO 0
-                    if (u.Elo < 0) u.Elo = 0;
-                }
-
-                Console.WriteLine("Tournament finished. ELOs updated.");
-                CheckAchievements(user);*/
 
                 SendOk(stream, "Push-up record saved!");
             }
@@ -309,17 +222,6 @@ namespace SEB.Controllers
                 return;
             }
 
-            // Sum all push-ups by this user
-            /*int totalPushups = records
-                .FindAll(r => r.UserId == user.Id)
-                .Sum(r => r.Count);
-
-            var responseObj = new
-            {
-                username = user.Username,
-                elo = user.Elo,
-                totalPushups = totalPushups
-            };*/
             var total = db.GetRecordsByUserId(user.Id).Sum(r => r.Count);
             var stats = new
             {
@@ -348,24 +250,6 @@ namespace SEB.Controllers
                 };
             })
             .OrderByDescending(s => s.elo);
-            /*var scoreboard = new List<object>();
-
-            foreach (var user in _users)
-            {
-                int totalPushups = records
-                    .FindAll(r => r.UserId == user.Id)
-                    .Sum(r => r.Count);
-
-                scoreboard.Add(new
-                {
-                    username = user.Username,
-                    elo = user.Elo,
-                    totalPushups = totalPushups
-                });
-            }
-
-            // Sort by ELO descending
-            scoreboard = scoreboard.OrderByDescending(u => ((dynamic)u).elo).ToList();*/
 
             string jsonResponse = JsonConvert.SerializeObject(scoreboard);
             string response = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n" + jsonResponse;
@@ -414,11 +298,6 @@ namespace SEB.Controllers
                 Console.WriteLine($"{user.Username} unlocked: Beast Mode!");
             }
 
-            // Grinder
-            /*int total = records
-                .Where(r => r.UserId == user.Id)
-                .Sum(r => r.Count);*/
-
             if (!unlocked.Contains("Grinder") && total >= 500)
             {
                 user.Achievements.Add("Grinder");
@@ -435,8 +314,64 @@ namespace SEB.Controllers
                 Console.WriteLine($"{user.Username} unlocked: Champion!");
             }
         }
+        public void GetUser(Stream stream, string token, string targetUsername)
+        {
+            var user = db.GetUserByToken(token);
+            if (user == null || user.Username != targetUsername)
+            {
+                SendUnauthorized(stream);
+                return;
+            }
 
+            string json = JsonConvert.SerializeObject(new
+            {
+                Name = user.Username,
+                Bio = "TODO: Add Bio field",
+                Image = "TODO: Add Image field"
+            });
 
+            string response = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n" + json;
+            stream.Write(Encoding.UTF8.GetBytes(response));
+        }
+
+        public void EditUser(Stream stream, string token, string targetUsername, string body)
+        {
+            var user = db.GetUserByToken(token);
+            if (user == null || user.Username != targetUsername)
+            {
+                SendUnauthorized(stream);
+                return;
+            }
+
+            try
+            {
+                var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
+                string name = data.ContainsKey("Name") ? data["Name"] : user.Username;
+                string bio = data.ContainsKey("Bio") ? data["Bio"] : "TODO";
+                string image = data.ContainsKey("Image") ? data["Image"] : "TODO";
+
+                // Update DB if needed here — for now, just pretend it's saved
+
+                Console.WriteLine($"User {user.Username} updated profile: Name={name}, Bio={bio}, Image={image}");
+
+                SendOk(stream, "Profile updated successfully.");
+            }
+            catch (Exception ex)
+            {
+                SendBadRequest(stream, "Invalid profile update. " + ex.Message);
+            }
+        }
+        public void GetTournament(Stream stream, string token)
+        {
+            var response = new
+            {
+                message = "No tournament data yet. This is a stub."
+            };
+
+            string json = JsonConvert.SerializeObject(response);
+            string reply = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n" + json;
+            stream.Write(Encoding.UTF8.GetBytes(reply));
+        }
 
     }
 }

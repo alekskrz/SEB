@@ -10,14 +10,12 @@ namespace SEB.Database
 {
     public class DatabaseManager
     {
-        private string connectionString = "Host=localhost;Username=postgres;Password=Partizan01;Database=EBS";
+        private string connectionString = "Host=localhost;Username=postgres;Password=Partizan01;Database=postgres";
 
         public void InsertUser(User user)
         {
-            Console.WriteLine("Inserting user 1");
             using var conn = new NpgsqlConnection(connectionString);
             conn.Open();
-            Console.WriteLine("Inserting user 2");
             string sql = "INSERT INTO users (username, password, elo, token, achievements) VALUES (@username, @password, @elo, @token, @achievements)";
             using var cmd = new NpgsqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("username", user.Username);
@@ -26,7 +24,6 @@ namespace SEB.Database
             cmd.Parameters.AddWithValue("token", user.Token ?? "");
             cmd.Parameters.AddWithValue("achievements", user.Achievements.ToArray());
             cmd.ExecuteNonQuery();
-            Console.WriteLine("Inserting user 3");
         }
 
         public User GetUserByUsername(string username)
@@ -84,14 +81,13 @@ namespace SEB.Database
         {
             using var conn = new NpgsqlConnection(connectionString);
             conn.Open();
-
             string sql = "SELECT * FROM users WHERE token = @token";
             using var cmd = new NpgsqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("token", token);
-
             using var reader = cmd.ExecuteReader();
             if (reader.Read())
             {
+                Console.WriteLine("Getting uaser by token 1");
                 return new User
                 {
                     Id = reader.GetInt32(0),
@@ -102,7 +98,7 @@ namespace SEB.Database
                     Achievements = new List<string>((string[])reader.GetValue(5))
                 };
             }
-
+            Console.WriteLine("Getting uaser by token 2");
             return null;
         }
 
@@ -136,7 +132,7 @@ namespace SEB.Database
             using var conn = new NpgsqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO pushup_records (user_id, count, duration, timestamp) " +
+            string sql = "INSERT INTO pushup_records (user_id, count, duration_seconds, timestamp) " +
                          "VALUES (@user_id, @count, @duration, @timestamp)";
             using var cmd = new NpgsqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("user_id", record.UserId);
@@ -152,7 +148,7 @@ namespace SEB.Database
             using var conn = new NpgsqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT id, user_id, count, duration, timestamp FROM pushup_records WHERE user_id = @id";
+            string sql = "SELECT id, user_id, count, duration_seconds, timestamp FROM pushup_records WHERE user_id = @id";
             using var cmd = new NpgsqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("id", userId);
 
@@ -178,7 +174,7 @@ namespace SEB.Database
             using var conn = new NpgsqlConnection(connectionString);
             conn.Open();
 
-            string sql = @"SELECT id, user_id, count, duration, timestamp
+            string sql = @"SELECT id, user_id, count, duration_seconds, timestamp
                    FROM pushup_records
                    WHERE ABS(EXTRACT(EPOCH FROM timestamp - @ts)) <= @range";
 
