@@ -16,9 +16,10 @@ namespace SEB.Server
         {
             try
             {
+                string line;
+                int contentLength = 0;
                 StreamReader reader = new StreamReader(stream);
                 string requestLine = reader.ReadLine();
-
                 if (requestLine == null)
                 {
                     Console.WriteLine("Empty request recived.");
@@ -29,19 +30,30 @@ namespace SEB.Server
 
                 //Split the request into method and path
                 string[] tokens = requestLine.Split(' ');
-
                 if (tokens.Length < 2)
                 {
                     Console.WriteLine("Invalid HTTP request line.");
                     return;
                 }
-
                 string method = tokens[0];
                 string path = tokens[1];
+                while (!string.IsNullOrEmpty(line = reader.ReadLine()))
+                {
+                    if (line.StartsWith("Content-Length:"))
+                    {
+                        contentLength = int.Parse(line.Substring("Content-Length:".Length).Trim());
+                    }
+                }
 
+                // Step 3: Read the exact number of characters from the body
+                char[] buffer = new char[contentLength];
+                int read = reader.Read(buffer, 0, contentLength);
+                string body = new string(buffer);
+
+                Console.WriteLine("Body: " + body);
                 if (method == "POST" && path == "/register")
                 {
-                    HandleRegister(stream);
+                    HandleRegister(stream, body);
                 }
                 else if(method == "POST" && path == "/login") 
                 {
@@ -77,12 +89,17 @@ namespace SEB.Server
                 Console.WriteLine("Error handling request: " + ex.Message);
             }
         }
-        private void HandleRegister(NetworkStream stream) 
+        private void HandleRegister(NetworkStream stream, string body) 
         {
-            StreamReader reader = new StreamReader (stream);
-            string body = ReadRequestBody(reader);
+            Console.WriteLine("HandleRequest 1");
+            //StreamReader reader = new StreamReader (stream);
+            Console.WriteLine("HandleRequest 2");
+            //string body = ReadRequestBody(reader);
+            Console.WriteLine("HandleRequest 3");
             UserController controller = new UserController();
+            Console.WriteLine("HandleRequest 4");
             controller.Register(stream, body);
+            Console.WriteLine("HandleRequest 5");
             string response = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nUser registration not implemented yet.";
             byte[] buffer = Encoding.UTF8.GetBytes(response);
             stream.Write(buffer, 0, buffer.Length);

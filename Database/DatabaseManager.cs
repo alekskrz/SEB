@@ -14,9 +14,10 @@ namespace SEB.Database
 
         public void InsertUser(User user)
         {
+            Console.WriteLine("Inserting user 1");
             using var conn = new NpgsqlConnection(connectionString);
             conn.Open();
-
+            Console.WriteLine("Inserting user 2");
             string sql = "INSERT INTO users (username, password, elo, token, achievements) VALUES (@username, @password, @elo, @token, @achievements)";
             using var cmd = new NpgsqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("username", user.Username);
@@ -25,6 +26,7 @@ namespace SEB.Database
             cmd.Parameters.AddWithValue("token", user.Token ?? "");
             cmd.Parameters.AddWithValue("achievements", user.Achievements.ToArray());
             cmd.ExecuteNonQuery();
+            Console.WriteLine("Inserting user 3");
         }
 
         public User GetUserByUsername(string username)
