@@ -13,11 +13,11 @@ namespace SEB.Models
         public string Password { get; set; }
         public int Elo { get; set; }
         public string Token { get; set; }
-        public List<string> Achivements { get; set; }
+        public List<string> Achievements { get; set; }
         public User() 
         {
             Elo = 1000;
-            Achivements = new List<string>();
+            Achievements = new List<string>();
         }
     }
 }
