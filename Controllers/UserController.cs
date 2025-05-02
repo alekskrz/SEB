@@ -198,6 +198,25 @@ namespace SEB.Controllers
 
                     db.UpdateUserEloAndAchievements(u);
                 }
+                Console.WriteLine("\n=== 🥊 Push-Up Battle Log ===");
+
+                foreach (var entry in grouped)
+                {
+                    var username = db.GetUserById(entry.Key).Username;
+                    Console.WriteLine($"- {username}: {entry.Value} push-ups");
+                }
+
+                Console.WriteLine($"\n Winner(s): {string.Join(", ", winners.Select(id => db.GetUserById(id).Username))}");
+
+                Console.WriteLine("\n ELO After Battle:");
+                foreach (var entry in grouped)
+                {
+                    var u = db.GetUserById(entry.Key);
+                    Console.WriteLine($"- {u.Username}: {u.Elo} ELO");
+                }
+
+                Console.WriteLine("=== End of Battle ===\n");
+
 
                 CheckAchievements(user);
                 db.UpdateUserEloAndAchievements(user);

@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|c:\\school\\seb\\tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|solutionrelative:tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|c:\\school\\seb\\server\\tournamentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E704DF88-2A4E-4859-AB29-EC08CAF15480}|SEB.csproj|solutionrelative:server\\tournamentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -38,11 +42,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\School\\SEB\\Tests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "Tests\\UnitTest1.cs",
+              "ToolTip": "C:\\School\\SEB\\Tests\\UnitTest1.cs",
+              "RelativeToolTip": "Tests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T21:39:38.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "TournamentManager.cs",
               "DocumentMoniker": "C:\\School\\SEB\\Server\\TournamentManager.cs",
               "RelativeDocumentMoniker": "Server\\TournamentManager.cs",
@@ -50,8 +67,7 @@
               "RelativeToolTip": "Server\\TournamentManager.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAADAAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T14:03:48.096Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T14:03:48.096Z"
             },
             {
               "$type": "Document",
@@ -61,14 +77,14 @@
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
               "ToolTip": "C:\\School\\SEB\\Controllers\\UserController.cs",
               "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwAgAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAYwNIAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-02T09:49:11.303Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "DatabaseManager.cs",
               "DocumentMoniker": "C:\\School\\SEB\\Database\\DatabaseManager.cs",
               "RelativeDocumentMoniker": "Database\\DatabaseManager.cs",
@@ -76,12 +92,11 @@
               "RelativeToolTip": "Database\\DatabaseManager.cs",
               "ViewState": "AgIAAH4AAAAAAAAAAAAnwLAAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T09:40:20.686Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T09:40:20.686Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Router.cs",
               "DocumentMoniker": "C:\\School\\SEB\\Server\\Router.cs",
               "RelativeDocumentMoniker": "Server\\Router.cs",
@@ -89,12 +104,11 @@
               "RelativeToolTip": "Server\\Router.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T09:40:12.491Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T09:40:12.491Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "HttpServer.cs",
               "DocumentMoniker": "C:\\School\\SEB\\Server\\HttpServer.cs",
               "RelativeDocumentMoniker": "Server\\HttpServer.cs",
@@ -102,12 +116,11 @@
               "RelativeToolTip": "Server\\HttpServer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T11:40:51.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-01T11:40:51.934Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "SEB.csproj",
               "DocumentMoniker": "C:\\School\\SEB\\SEB.csproj",
               "RelativeDocumentMoniker": "SEB.csproj",
@@ -115,12 +128,11 @@
               "RelativeToolTip": "SEB.csproj",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-01T11:34:16.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-01T11:34:16.497Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\School\\SEB\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -128,8 +140,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T11:31:16.249Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-01T11:31:16.249Z"
             }
           ]
         }
